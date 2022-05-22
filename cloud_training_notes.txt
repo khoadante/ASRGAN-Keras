@@ -1,0 +1,6 @@
+nvidia-smi
+
+git clone https://github.com/khoadante/ASRGAN.git
+cd ASRGAN/
+
+pip install -r requirements.txt
