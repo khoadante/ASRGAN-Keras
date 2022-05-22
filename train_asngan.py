@@ -21,7 +21,7 @@ parser.add_argument('--batch_size', type=int, default=32, help='Number batches')
 parser.add_argument('--restore_checkpoint', default=False, action='store_true', help='Use training checkpoints to continue training the model')
 parser.add_argument('--load_gan_weights', default=False, action='store_true', help='Load the gan pre-trained weights')
 parser.add_argument('--save_gan_model', default=False, action='store_true', help='Save the generator model')
-parser.add_argument('--save_ema_model', default=True, action='store_true', help='Save the generator ema model')
+parser.add_argument('--save_ema_model', default=False, action='store_true', help='Save the generator ema model')
 parser.add_argument('--use_anet', default=False, action='store_true', help='Use the A network (may crash)')
 
 args = parser.parse_args()
