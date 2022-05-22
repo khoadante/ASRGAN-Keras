@@ -17,7 +17,7 @@ from utils.data import usm_sharpener
 parser = argparse.ArgumentParser()
 
 parser.add_argument('--epochs', type=int, default=100, help='Number of epochs to train the model')
-parser.add_argument('--batch_size', type=int, default=32, help='Number batches')
+parser.add_argument('--batch_size', type=int, default=16, help='Number batches')
 parser.add_argument('--restore_checkpoint', default=False, action='store_true', help='Use training checkpoints to continue training the model')
 parser.add_argument('--save_gan_weights', default=False, action='store_true', help='Save the generator weights')
 parser.add_argument('--save_ema_model', default=False, action='store_true', help='Save the generator ema model')
@@ -32,7 +32,7 @@ LEARNING_RATE = 2e-4
 BETA_1 = 0.9
 BETA_2 = 0.99
 
-POOL_SIZE = BATCH_SIZE * 5
+POOL_SIZE = BATCH_SIZE * 10
 RESTORE_CHECKPOINT = args.restore_checkpoint
 SAVE_GAN_WEIGHTS = args.save_gan_weights
 SAVE_EMA_MODEL = args.save_ema_model
