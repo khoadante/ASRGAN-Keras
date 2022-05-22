@@ -4,3 +4,5 @@ git clone https://github.com/khoadante/ASRGAN.git
 cd ASRGAN/
 
 pip install -r requirements.txt
+
+python train_asrnet.py --epochs 5 --save_gan_weights --save_ema_model --use_anet
