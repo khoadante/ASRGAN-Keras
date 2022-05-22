@@ -41,11 +41,13 @@ USE_ANET = args.use_anet
 
 optimizer = Adam(learning_rate=LEARNING_RATE, beta_1=BETA_1, beta_2=BETA_2)
 
-no_gan_model = ARRDBNet() if USE_ANET else RRDBNet()
-no_gan_model.build((None, 256, 256, 3))
+input_shape = (None, 256, 256, 3)
 
-ema_no_gan_model = ARRDBNet() if USE_ANET else RRDBNet()
-ema_no_gan_model.build((None, 256, 256, 3))
+no_gan_model = ARRDBNet(input_shape) if USE_ANET else RRDBNet(input_shape)
+# no_gan_model.build((None, 256, 256, 3))
+
+ema_no_gan_model = ARRDBNet(input_shape) if USE_ANET else RRDBNet(input_shape)
+# ema_no_gan_model.build((None, 256, 256, 3))
 
 ema_api = AverageModelWeights(ema_no_gan_model, no_gan_model.get_weights())
 

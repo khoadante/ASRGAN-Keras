@@ -16,8 +16,9 @@ test_batch_size = 4
 
 class TestModels(unittest.TestCase):
   def setUp(self):
-    self.generator_test = RRDBNet()
-    self.discriminator_test = UNetDiscriminator()
+    input_shape = (None, 256, 256, 3)
+    self.generator_test = RRDBNet(input_shape)
+    self.discriminator_test = UNetDiscriminator(input_shape)
     self.vgg_test = Vgg19FeaturesModel()
 
     self.generator_input = tf.random.normal((test_batch_size, 64, 64, 3))

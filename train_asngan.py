@@ -46,15 +46,17 @@ USE_ANET = args.use_anet
 gen_optimizer = Adam(learning_rate=LEARNING_RATE, beta_1=BETA_1, beta_2=BETA_2)
 disc_optimizer = Adam(learning_rate=LEARNING_RATE, beta_1=BETA_1, beta_2=BETA_2)
 
-gan_model = ARRDBNet() if USE_ANET else RRDBNet()
+input_shape = (None, 256, 256, 3)
+
+gan_model = ARRDBNet(input_shape) if USE_ANET else RRDBNet(input_shape)
 
 if LOAD_GAN_WEIGHTS:
     gan_model.load_weights('./checkpoint_weights/last_weights')
 
-gan_model.build((None, 256, 256, 3))
+# gan_model.build((None, 256, 256, 3))
 
-ema_gan_model = ARRDBNet() if USE_ANET else RRDBNet()
-ema_gan_model.build((None, 256, 256, 3))
+ema_gan_model = ARRDBNet(input_shape) if USE_ANET else RRDBNet(input_shape)
+# ema_gan_model.build((None, 256, 256, 3))
 
 ema_api = AverageModelWeights(ema_gan_model, gan_model.get_weights())
 

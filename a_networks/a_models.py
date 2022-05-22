@@ -6,9 +6,9 @@ from a_networks.a_blocks import ARRDB
 
 
 class ARRDBNet(Model):
-  def __init__(self):
+  def __init__(self, input_shape):
     super(ARRDBNet, self).__init__()
-    self.first_conv = SeparableConv2D(64, 3, strides=(1, 1), padding="SAME") # padding 1
+    self.first_conv = SeparableConv2D(64, 3, strides=(1, 1), padding="SAME", input_shape=input_shape) # padding 1
     self.rb_1 = ARRDB()
     self.rb_2 = ARRDB()
     self.rb_3 = ARRDB()

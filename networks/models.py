@@ -6,9 +6,9 @@ from networks.blocks import RRDB
 
 
 class RRDBNet(Model):
-  def __init__(self):
+  def __init__(self, input_shape):
     super(RRDBNet, self).__init__()
-    self.first_conv = Conv2D(64, 3, strides=(1, 1), padding="SAME") # padding 1
+    self.first_conv = Conv2D(64, 3, strides=(1, 1), padding="SAME", input_shape=input_shape) # padding 1
     self.rb_1 = RRDB()
     self.rb_2 = RRDB()
     self.rb_3 = RRDB()
@@ -56,10 +56,10 @@ class RRDBNet(Model):
     return x
 
 class UNetDiscriminator(Model):
-  def __init__(self):
+  def __init__(self, input_shape):
     super(UNetDiscriminator, self).__init__()
 
-    self.conv_0 = SpectralNormalization(Conv2D(64, 3, strides=(1, 1), padding="SAME", use_bias=False))
+    self.conv_0 = SpectralNormalization(Conv2D(64, 3, strides=(1, 1), padding="SAME", use_bias=False, input_shape=input_shape))
     self.conv_1 = SpectralNormalization(Conv2D(128, 4, strides=(2, 2), padding="SAME", use_bias=False))
     self.conv_2 = SpectralNormalization(Conv2D(256, 4, strides=(2, 2), padding="SAME", use_bias=False))
     self.conv_3 = SpectralNormalization(Conv2D(512, 4, strides=(2, 2), padding="SAME", use_bias=False))
