@@ -25,7 +25,7 @@ test_pool_size = test_batch_size * 2
 
 class TestDataGenerator(unittest.TestCase):
   def setUp(self):
-    data_path = os.path.abspath("./test/test_data_images/*.png")
+    data_path = os.path.abspath("./test_examples/*.png")
     test_images_paths = sorted(glob(data_path))
 
     test_dataset = tf.data.Dataset.from_tensor_slices((test_images_paths))
